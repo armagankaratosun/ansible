@@ -1,0 +1,27 @@
+---
+- name: Pip installer
+  hosts: all
+  remote_user: ubuntu
+  become: true
+  become_user: root
+  become_method: sudo
+  pre_tasks:
+
+    # Update apt cache and install python 2 
+
+    - name: Update APT cache
+      raw: apt-get update
+      become: True
+      changed_when: false
+
+    - name: Install python
+      apt: 
+      name: python
+      update_cache: yes
+
+    # Gather facts once ansible dependencies are installed
+    - name: Gather facts
+      setup:
+
+  roles:
+    - { role: "ansible-pip", "ansible-matplotlib" } 

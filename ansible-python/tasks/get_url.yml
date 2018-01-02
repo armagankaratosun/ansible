@@ -1,0 +1,5 @@
+---
+- name: pip-installer
+  get_url: url=https://bootstrap.pypa.io/get-pip.py
+           dest=/tmp/get-pip.py
+

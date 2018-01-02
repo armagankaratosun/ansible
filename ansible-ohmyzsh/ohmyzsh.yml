@@ -1,0 +1,20 @@
+###
+# This playbook installs  my (new) favorite shell, ohmyzsh!
+###
+
+- name: Install OhMyZsh! on Ubuntu
+  hosts: all
+  sudo: yes
+
+  tasks:
+  - name: install zsh
+    apt: name=zsh
+
+  - name: curl oh-my-zsh
+    shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  - name: set theme to avit
+    lineinfile:
+      name: /home/armagan/.zshrc
+      regexp: '^ZSH_THEME='
+      line: 'ZSH_THEME="avit"'

@@ -1,0 +1,31 @@
+####
+# We have to install Apache, MySQL and Php to achive our objective.
+# Also, we have to configure our firewall to allow web traffic. 
+# I will fallow tipical procedure shown in:
+# http://howtoubuntu.org/how-to-install-lamp-on-ubuntu
+####
+
+- name: Install LAMP stack on UBUNTU
+  hosts: all
+  sudo: yes
+
+  vars:
+   http_port: 80
+   max_clients: 200
+
+  tasks:
+  - name: install apache
+    apt: name=apache2 update_cache=yes state=latest
+
+  - name: install mysql-server
+    apt: name=mysql-server 
+
+  - name: install php
+    apt: name=php7.0
+
+  - name: install libapache 
+    apt: name=libapache2-mod-php7.0 
+
+  handlers: 
+  - name: restart apache2
+    service: name=apache2 state=restart
