@@ -1,0 +1,14 @@
+- name: pip => downloading pip
+  get_url: url=https://bootstrap.pypa.io/get-pip.py
+           dest=/tmp
+
+- name: installing pip
+  command: "python get-pip.py"
+  args:
+      chdir: /tmp
+
+- name: installing numpy
+  command: python -mpip install -U numpy scipy
+
+- name: installing matplotlib
+  command: python -mpip install -U matplotlib

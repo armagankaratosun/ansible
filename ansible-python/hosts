@@ -1,5 +1,0 @@
-#imaginary hosts
-
-host1 ansible_ssh_host=160.75.90.91
-host2 ansible_ssh_host=160.75.90.92
-host3 ansible_ssh_host=160.75.90.93
